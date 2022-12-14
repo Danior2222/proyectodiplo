@@ -10,6 +10,7 @@
             $db = new Database();
             $this->conn = $db->connectToDatabase();
         }
+        
         function save($params){
             $firstName = $params['firstName'];
             $lastName  = $params['lastName'];
@@ -19,8 +20,10 @@
             $sessionDate = $params['sessionDate'];
             $carrera =$params['carrera'];
             $image = $params['image'];
-            
-            $insert = " INSERT INTO consulta VALUES (NULL, '$firstName', '$lastName','$email','$phone','$diseases','$sessionDate','$carrera','$image')";
+            $inv2 = $params['inv2'];
+            $porcecred = $params ['porcecred'];
+          
+            $insert = " INSERT INTO consulta VALUES (NULL, '$firstName', '$lastName','$email','$phone','$diseases','$sessionDate','$carrera','$image','$inv2','$porcecred')";
             return mysqli_query($this->conn, $insert);
         }
         function getAll(){
@@ -40,9 +43,11 @@
             $sessionDate = $params['sessionDate'];
             $carrera =$params['carrera'];
             $image = $params['image'];
+            $inv2 = $params['inv2'];
+            $porcecred = $params ['porcecred'];
             $id = $params['id'];
 
-            $update = " UPDATE consulta SET firstName= '$firstName', lastName='$lastName', email='$email', phone='$phone', diseases='$diseases', sessionDate='$sessionDate', carrera='$carrera', image='$image' WHERE id = $id";
+            $update = " UPDATE consulta SET firstName= '$firstName', lastName='$lastName', email='$email', phone='$phone', diseases='$diseases', sessionDate='$sessionDate', carrera='$carrera', image='$image', inv2='$inv2', porcecred='$porcecred' WHERE id = $id";
             return mysqli_query($this->conn, $update);
         }
         function remove($id){
